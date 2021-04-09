@@ -10,4 +10,4 @@ How To install and run this project : <br>
 8. If already run, try to open 'localhost:3000' in your browser and the app is already works.
 
 # Query file
-The query file is in auth.js which is in the controller folder
+The query file is in 'controller/auth.js'
