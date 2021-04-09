@@ -8,3 +8,6 @@ How To install and run this project : <br>
 6. If clone and import already done, open terminal on vscode or you can use cmd(make sure you already give right folder path in cmd).
 7. After that, type 'npm run start' in cmd or terminal in vscode.
 8. If already run, try to open 'localhost:3000' in your browser and the app is already works.
+
+# Query file
+The query file is in auth.js which is in the controller folder
