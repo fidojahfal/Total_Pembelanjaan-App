@@ -1,0 +1,10 @@
+form {
+    margin-left: 40%;
+    margin-right: 50%;
+    margin-bottom: 5%;
+    width: 50%;
+}
+
+.flex-end {
+    float: right;
+}

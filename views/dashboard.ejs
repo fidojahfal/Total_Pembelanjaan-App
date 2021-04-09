@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <% if(messages != '' && messages ==='Data sudah ada dalam database, masukan data yang lain!'){ %>
+        <div class="alert alert-danger alertbx alert-dismissible fade show" role="alert">
+            <%= messages %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+        <% } else{ %>
+            <div class="alert alert-success alertbx alert-dismissible fade show" role="alert" hidden>
+                <%= messages %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            <% } %>
+                <% if(messages ==='Data Terinput :)'){ %>
+                    <div class="alert alert-success alertbxg alert-dismissible fade show" role="alert">
+                        <%= messages %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <% } else{ %>
+                        <div class="alert alert-success alertbxg alert-dismissible fade show" role="alert" hidden>
+                            <%= messages %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <% } %>
+                            <div class="bg-contact3">
+                                <div class="container-contact3">
+                                    <div class="wrap-contact3">
+                                        <form action="/auth/inputData" method="POST" class="contact3-form validate-form">
+                                            <span class="contact3-form-title">Total Belanja Setiap Orang</span>
+
+                                            <div class="wrap-contact3-form-radio">
+
+                                                <div class="contact3-form-radio">
+                                                    <input class="input-radio3" id="radio1" type="radio" name="name" value="Adi" required>
+                                                    <label class="label-radio3" for="radio1">Adi</label>
+                                                </div>
+                                                <div class="contact3-form-radio">
+                                                    <input class="input-radio3" id="radio2" type="radio" name="name" value="Budi" required>
+                                                    <label class="label-radio3" for="radio2">Budi</label>
+                                                </div>
+                                                <div class="contact3-form-radio">
+                                                    <input class="input-radio3" id="radio3" type="radio" name="name" value="Cinta" required>
+                                                    <label class="label-radio3" for="radio3">Cinta</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="wrap-input3 input3-select">
+                                                <div>
+                                                    <select class="selection-2" name="tanggal" required>
+								<option value="">Pilih Tanggal</option>
+								<option value="2020-01-03">03/01/2020</option>
+								<option value="2020-01-04">04/01/2020</option>
+								<option value="2020-01-05">05/01/2020</option>
+							</select>
+                                                </div>
+                                                <span class="focus-input3"></span>
+                                            </div>
+
+                                            <div class="container-contact3-form-btn">
+                                                <button class="contact3-form-btn">
+							Submit
+						</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <% if(!user[0]){ %>
+                                    <table style="display: none;"></table>
+                                    <% } else{ %>
+                                        <div class="container">
+                                            <table id="table" class="table table-striped table-bordered table-hover">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th class="text-center">Nama</th>
+                                                        <th class="text-center">Tanggal</th>
+                                                        <th class="text-center">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <% user.forEach(function(user){ %>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <%= user.Nama_Pelanggan %>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <%= user.Tanggal %>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <%= user.Total_Belanja  %>
+                                                            </td>
+                                                        </tr>
+                                                        <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <% } %>
+                                            <% if(!user[0]){ %>
+                                                <button style="display: none;"></button>
+                                                <% } else{ %>
+                                                    <div class="container" style="padding-bottom: 5%;">
+                                                        <button type="button" onclick="location.href='/auth/delete'" class="btn btn-danger flex-end">Delete All Data</button>
+                                                    </div>
+                                                    <% } %>
+                            </div>
+                            <div id="dropDownSelect1"></div>
+
+                            <!--===============================================================================================-->
+                            <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+                            <!--===============================================================================================-->
+                            <script src="vendor/bootstrap/js/popper.js"></script>
+                            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+                            <!--===============================================================================================-->
+                            <script src="vendor/select2/select2.min.js"></script>
+                            <script>
+                                $(".selection-2").select2({
+                                    minimumResultsForSearch: 20,
+                                    dropdownParent: $('#dropDownSelect1')
+                                });
+                            </script>
+                            <!--===============================================================================================-->
+                            <script src="js/main.js"></script>
+
+                            <!-- Global site tag (gtag.js) - Google Analytics -->
+                            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+                            <script>
+                                window.dataLayer = window.dataLayer || [];
+
+                                function gtag() {
+                                    dataLayer.push(arguments);
+                                }
+                                gtag('js', new Date());
+
+                                gtag('config', 'UA-23581568-13');
+                            </script>
+</body>
+
+</html>
